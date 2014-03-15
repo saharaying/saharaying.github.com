@@ -84,31 +84,7 @@ article + article {
 #disqus_thread {
   margin-top: 30px; }
 
-/* line 39, /Users/yingfu/Projects/blog-build/source/stylesheets/_article.css.scss */
-.article-nav {
-  position: fixed;
-  top: 50%;
-  color: white;
-  text-shadow: 0 0 2px #333; }
-  /* line 45, /Users/yingfu/Projects/blog-build/source/stylesheets/_article.css.scss */
-  .article-nav#prev {
-    left: 15px; }
-  /* line 49, /Users/yingfu/Projects/blog-build/source/stylesheets/_article.css.scss */
-  .article-nav#next {
-    right: 15px; }
-  /* line 53, /Users/yingfu/Projects/blog-build/source/stylesheets/_article.css.scss */
-  .article-nav:hover {
-    color: white;
-    text-decoration: none; }
-  /* line 58, /Users/yingfu/Projects/blog-build/source/stylesheets/_article.css.scss */
-  .article-nav i {
-    font-size: 60px;
-    line-height: 42px; }
-  /* line 63, /Users/yingfu/Projects/blog-build/source/stylesheets/_article.css.scss */
-  .article-nav .tooltip-inner {
-    white-space: nowrap; }
-
-/* line 69, /Users/yingfu/Projects/blog-build/source/stylesheets/_article.css.scss */
+/* line 40, /Users/yingfu/Projects/blog-build/source/stylesheets/_article.css.scss */
 .article-list li {
   line-height: 180%; }
 
@@ -285,3 +261,21 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 /* line 114, /Users/yingfu/Projects/blog-build/source/stylesheets/all.css.scss */
 .pagination > li > a, .pagination > li > span, .pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
   color: #ff769f; }
+
+/* line 118, /Users/yingfu/Projects/blog-build/source/stylesheets/all.css.scss */
+h2 .fa-anchor {
+  font-size: 100px;
+  color: #ff769f;
+  margin: 80px 0; }
+  /* line 123, /Users/yingfu/Projects/blog-build/source/stylesheets/all.css.scss */
+  h2 .fa-anchor:hover {
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out; }
