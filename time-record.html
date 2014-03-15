@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>时间记录 - Sahara</title>
+<link href="/stylesheets/bootstrap.css" media="screen" rel="stylesheet" type="text/css">
+<script src="/javascripts/jquery-1.8.3.min.js" type="text/javascript"></script><script src="/javascripts/jquery.cookie.js" type="text/javascript"></script><style type="text/css">
+    body {
+        background-color: #EEE;
+    }
+
+    .container {
+        max-width: 90%;
+    }
+
+    form input[type=text],
+    form button.btn, form input[type=submit].btn {
+        font-size: 20px;
+        margin-top: 30px;
+    }
+
+    form input[type=text] {
+        width: 95%;
+        height: 30px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <form method="post" action="https://jinshuju.net/f/512b43c124290a1052005645" accept-charset="UTF-8">
+    <fieldset>
+<input value="工作时间" name="entry[field_1]" type="text"><input name="entry[field_3]" type="hidden"><input name="entry[field_2]" type="hidden">
+</fieldset>
+<button class="start btn btn-primary btn-large btn-block hide">开始计时</button>
+    <input class="btn btn-danger btn-large btn-block hide" value="结束计时" type="submit">
+</form>
+</div>
+<footer></footer><script type="text/javascript">
+    $(function () {
+        if ($.cookie('field_3'))
+            $('form input[type=submit]').show();
+        else
+            $('form button').show();
+
+        $("form button.start").click(function () {
+            $.cookie('field_3', new Date());
+            $(this).hide();
+            $('form input[type=submit]').show();
+            return false;
+        });
+
+        $("form").submit(function () {
+            $('form input[name="entry[field_3]"]').val($.cookie('field_3'));
+            var interval = new Date() - new Date($.cookie('field_3'));
+            $('form input[name="entry[field_2]"]').val(interval / 1000 / 3600);
+            $.removeCookie('field_3');
+        });
+    });
+
+</script>
+</body>
+</html>

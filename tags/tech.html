@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
+<meta name="keywords" content="">
+<title>Tech | Sahara</title>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><link href="/stylesheets/all.css" media="screen" rel="stylesheet" type="text/css">
+<script src="/javascripts/html5.js" type="text/javascript"></script><script src="/javascripts/application.js" type="text/javascript"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation"><div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar_collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Sahara</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar_collapse">
+      <ul class="nav navbar-nav">
+<li class=""><a href="#">什锦杂烩</a></li>
+        <li class="active"><a href="/tags/tech.html">技术活呀</a></li>
+        <li class=""><a href="/photos.html">美片片儿</a></li>
+      </ul>
+<ul class="nav navbar-nav navbar-right">
+<li class="">
+          <a href="/contact.html">
+            <i class="fa fa-leaf"></i> Contact Me
+          </a>
+        </li>
+      </ul>
+</div>
+  </div>
+</nav><div class="container-fluid">
+  
+<div class="row">
+  <div class="col-md-10">
+    
+        <article class="clearfix"><h4>
+            <div class="timestamp">2013年04月30日</div>
+            <a href="/2013/04/30/cross-domain-iframe-auto-height.html">Cross Domain iFrame Auto Height</a>
+          </h4>
+          <p></p>
+<p>We have a feature, that is providing a js script which generates an iframe containing a form, so that other people can embed this form on their website by just including this js.
+What we did before, is calculating the form height, and writing the height...</p>
+          
+            <div class="pull-right"><a href="/2013/04/30/cross-domain-iframe-auto-height.html">继续阅读 &gt;&gt;</a></div>
+          
+        </article><article class="clearfix"><h4>
+            <div class="timestamp">2013年04月30日</div>
+            <a href="/2013/04/30/migrate-from-mongomapper-to-mongoid.html">MongoMapper迁移到Mongoid</a>
+          </h4>
+          <p></p>
+<p>这篇博客断断续续写了将近一个月，终于算是总结的差不多了，将就着看吧。</p>
+
+<hr>
+<p>原本我们使用了MongoMapper作为MongoDB的ORM，但是随着业务逻辑越来越复杂，它已经不能满足我们的需求了:</p>
+
+<ol>
+<li>数据量越来越大，数据库查询性能问题越来越显著，据说Mongoid的性能可以提高4倍</li>
+  <li>MongoMapper的gem最后一次更新是在2012年9月，维护的频率不如Mongoid（最后更新2013年4月17日），并且对动态域的存取操作支持也不好</li>
+  <li>围绕Mongoid的周边gem更加丰富</li>
+</ol>
+<p>于是我花...</p>
+          
+            <div class="pull-right"><a href="/2013/04/30/migrate-from-mongomapper-to-mongoid.html">继续阅读 &gt;&gt;</a></div>
+          
+        </article><article class="clearfix"><h4>
+            <div class="timestamp">2013年02月09日</div>
+            <a href="/2013/02/09/3-ways-to-calculate-aggregation-in-mongodb-3.html">MongoDB中计算聚合值的三种方法（三）</a>
+          </h4>
+          <p></p>
+<p>其实，MongoDB已经提供了求最大最小平均值和和值的方法，所以连reduce都可以免了，我们可以直接使用aggregation框架，这就是第三种方法。</p>
+
+<h4>3. 使用aggregation框架</h4>
+
+<p>MongoDB文档中<a href="http://docs.mongodb.org/manual/reference/aggregation/">aggregation这一节</a>对这个框架的使用有详细的说明。结合我们的例子，可以这样使用：</p>
+
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">number_statistics</span> <span class="n">field</span><span class="p">,</span> <span class="n">condition</span>
+  <span class="nb">self</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="o">[</span>
+    <span class="p">{:</span><span class="vg">$match</span> <span class="o">=&gt;.</span><span class="n">.</span><span class="o">.</span>
+</pre></div>
+          
+            <div class="pull-right"><a href="/2013/02/09/3-ways-to-calculate-aggregation-in-mongodb-3.html">继续阅读 &gt;&gt;</a></div>
+          
+        </article><article class="clearfix"><h4>
+            <div class="timestamp">2013年01月03日</div>
+            <a href="/2013/01/03/3-ways-to-calculate-aggregation-in-mongodb-2.html">MongoDB中计算聚合值的三种方法（二）</a>
+          </h4>
+          <p></p>
+<p>在<a href="/2012/12/31/3-ways-to-calculate-aggregation-in-mongodb-1.html">上一篇博文</a>中，介绍了如何使用Map-Reduce计算聚合值。
+但我们的需求并不需要进行任何的映射，我们只要对过滤出来的结果进行计算就可以了。这样，MongoDB中的group方法就可以直接为我所用。</p>
+
+<h4>2. 使用group</h4>
+
+<p>逻辑上跟使用Map-Reduce差不多，不过reduce和finalize的参数有一些变化。</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">number_statistics</span> <span class="n">field</span><span class="p">,</span> <span class="n">condition</span>
+  <span class="nb">self</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">group</span><span class="p">(</span>
+      <span class="ss">:cond</span> <span class="o">=.</span><span class="n">.</span><span class="o">.</span>
+</pre></div>
+          
+            <div class="pull-right"><a href="/2013/01/03/3-ways-to-calculate-aggregation-in-mongodb-2.html">继续阅读 &gt;&gt;</a></div>
+          
+        </article><article class="clearfix"><h4>
+            <div class="timestamp">2012年12月31日</div>
+            <a href="/2012/12/31/3-ways-to-calculate-aggregation-in-mongodb-1.html">MongoDB中计算聚合值的三种方法（一）</a>
+          </h4>
+          <p></p>
+<p>说到报表，不可避免的会涉及到计算数字域的总计、平均值、最大值和最小值。前一阵在做<a href="http://weibo.com/u/3166713675" target="_blank">@金数据</a>的过程中，对使用MongoMapper做聚合做了一点点研究。总的来说，应该是有三种方法：</p>
+
+<h4>1. 使用Map-Reduce</h4>
+
+<p>MongoDB的Map-Reduce可谓是功能强大，可以处理复杂的聚合逻辑。关键是map方法和reduce方法的设计。</p>
+
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">map</span> <span class="n">field</span>
+  <span class="o">&lt;&lt;-</span><span class="no">MAP</span>
+<span class="err">    function() {</span>
+<span class="err">      var number = this.#{field...</span>
+    <span class="n">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="n">var</span> <span class="n">number</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="c1">#{field...</span>
+</pre></div>
+          
+            <div class="pull-right"><a href="/2012/12/31/3-ways-to-calculate-aggregation-in-mongodb-1.html">继续阅读 &gt;&gt;</a></div>
+          
+        </article><article class="clearfix"><h4>
+            <div class="timestamp">2012年12月08日</div>
+            <a href="/2012/12/08/ie8-image-opacity.html">IE8下的图片透明度</a>
+          </h4>
+          <p></p>
+<p>有这样一个需求：有一个数据表格，要求hover到一条数据上时显示可以对该条数据进行的操作，譬如删除和查看，用一个个小图标来表示。而hover到单个图标上时，图标颜色加深。如下图：</p>
+
+<p><img src="/2012/12/08/ie8-image-opacity/hover-icon.png"></p>
+
+<p>一开始，我们的解决方式是：一个深色的png图标，默认给一个0.6的opacity（IE下是alpha），hover上去的时候将opacity置回1。</p>
+
+<div class="highlight"><pre>    <span class="nt">a</span> <span class="p">{</span>
+      <span class="nc">.icon</span> <span class="p">{</span>
+        <span class="na">background</span><span class="o">:</span> <span class="sx">url("icon.png")</span><span class="p">;</span>
+        <span class="k">@include</span><span class="nc">...</span>
+</pre></div>
+          
+            <div class="pull-right"><a href="/2012/12/08/ie8-image-opacity.html">继续阅读 &gt;&gt;</a></div>
+          
+        </article>
+</div>
+  <aside class="col-md-2"><div class="list-group">
+    
+        <a class="list-group-item " href="/tags/ui.html">
+          <span class="badge">2</span>
+          UI
+        </a>
+    
+        <a class="list-group-item " href="/tags/ie.html">
+          <span class="badge">1</span>
+          IE
+        </a>
+    
+        <a class="list-group-item " href="/tags/mongomapper.html">
+          <span class="badge">4</span>
+          MongoMapper
+        </a>
+    
+        <a class="list-group-item " href="/tags/mongodb.html">
+          <span class="badge">4</span>
+          MongoDB
+        </a>
+    
+        <a class="list-group-item " href="/tags/mongoid.html">
+          <span class="badge">1</span>
+          Mongoid
+        </a>
+    
+  </div>
+
+  <!--<div class="list-group">-->
+    <!---->
+        <!--<a class="list-group-item" href="/2013.html">-->
+          <!--<span class="badge">4</span>-->
+          <!--2013年-->
+        <!--</a>-->
+    <!---->
+        <!--<a class="list-group-item" href="/2012.html">-->
+          <!--<span class="badge">2</span>-->
+          <!--2012年-->
+        <!--</a>-->
+    <!---->
+  <!--</div>-->
+</aside>
+</div>
+
+</div>
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36981452-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+</body>
+</html>
